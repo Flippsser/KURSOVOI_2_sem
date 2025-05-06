@@ -282,6 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Всегда переходить на фильм 'Социальная сеть'
             localStorage.setItem('selectedMovieTitle', 'Социальная сеть');
             localStorage.setItem('selectedMovieImage', 'assets/images/social.jpg');
+            localStorage.setItem('selectedMovieTrailer', 'https://www.youtube.com/watch?v=54izAMhnj0c');
             window.location.href = 'movie.html';
         });
     }

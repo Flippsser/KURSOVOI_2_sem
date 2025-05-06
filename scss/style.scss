@@ -123,6 +123,20 @@ button {
 .main__btn:hover {
   background-color: #901e1e;
 }
+.main__btn--trailer {
+  margin-top: 20px;
+  font-size: 28px;
+  padding: 8px 18px;
+  background-color: #CB3737;
+  color: #fff;
+  border-radius: 60px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: block;
+}
+.main__btn--trailer:hover {
+  background-color: #a42b2b;
+}
 
 /* Секция с фильмами */
 .movies {

@@ -923,6 +923,10 @@ button {
     margin-top: 10px;
   }
 }
+/*подтверждение*/
+.confirmation__details{
+  font-size: 30px;
+}
 /* Стили для мобильного меню */
 .mobile-menu {
   position: fixed;
@@ -994,4 +998,4 @@ html, body {
 .header, .footer {
   width: 100%;
   box-sizing: border-box;
-} /*# sourceMappingURL=style.css.map */
+} 
