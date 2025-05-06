@@ -85,6 +85,31 @@ document.addEventListener('DOMContentLoaded', function() {
             moviePageImage.setAttribute('src', movieImage);
             moviePageImage.setAttribute('alt', movieTitle);
         }
+
+        // --- Выводим год, жанр и описание из XML через fetch ---
+        loadMovieXML().then(xml => {
+            if (!movieTitle) return;
+            const movies = Array.from(xml.querySelectorAll('movie'));
+            // Сравниваем названия без лишних пробелов и в нижнем регистре
+            const normalize = str => (str || '').trim().toLowerCase();
+            const movie = movies.find(m => normalize(m.querySelector('title').textContent) === normalize(movieTitle));
+            const yearElem = document.getElementById('movie-year');
+            const genreElem = document.getElementById('movie-genre');
+            const descElem = document.querySelector('.movie__description p');
+            if (movie) {
+                const year = movie.querySelector('year')?.textContent || '';
+                const genre = movie.querySelector('genre')?.textContent || '';
+                const description = movie.querySelector('description')?.textContent || '';
+                if (yearElem) yearElem.textContent = year;
+                if (genreElem) genreElem.textContent = genre;
+                if (descElem) descElem.textContent = description;
+            } else {
+                if (descElem) descElem.textContent = '';
+                if (yearElem) yearElem.textContent = '';
+                if (genreElem) genreElem.textContent = '';
+                console.warn('Фильм не найден в XML:', movieTitle);
+            }
+        });
     }
     
     // Обработчики для кнопок бронирования
@@ -162,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Обработчик для свободных мест
                     seatElement.addEventListener('click', () => {
                         seatElement.classList.toggle('booking__seat--selected');
+                        updateTotalPrice();
                     });
                 }
                 
@@ -173,6 +199,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             seatsContainer.appendChild(rowElement);
+        }
+        // После генерации мест обновляем цену (на случай, если seats генерируются повторно)
+        updateTotalPrice();
+    }
+    
+    // Функция для обновления итоговой цены
+    function updateTotalPrice() {
+        const selectedSeats = document.querySelectorAll('.booking__seat--selected');
+        const pricePerSeat = 15;
+        const totalPrice = selectedSeats.length * pricePerSeat;
+        const totalPriceElement = document.getElementById('total-price');
+        if (totalPriceElement) {
+            totalPriceElement.textContent = totalPrice;
         }
     }
     
@@ -196,6 +235,11 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('confirmationTime', timeDropdown.textContent === 'время' ? '18:30' : timeDropdown.textContent);
             localStorage.setItem('confirmationMovie', movieTitle);
 
+            // Сохраняем итоговую цену
+            const pricePerSeat = 15;
+            const totalPrice = selectedSeats.length * pricePerSeat;
+            localStorage.setItem('confirmationPrice', totalPrice);
+
             // Перенаправляем на страницу подтверждения
             window.location.href = 'confirmation.html';
         });
@@ -206,10 +250,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const cinema = localStorage.getItem('confirmationCinema');
         const time = localStorage.getItem('confirmationTime');
         const movie = localStorage.getItem('confirmationMovie');
+        const price = localStorage.getItem('confirmationPrice');
         
         if (cinema) document.getElementById('confirmation-cinema').textContent = cinema;
         if (time) document.getElementById('confirmation-time').textContent = time;
         if (movie) document.getElementById('confirmation-movie').textContent = movie;
+        if (price) document.getElementById('confirmation-price').textContent = price + ' руб.';
+
+        // Загрузка XML и подстановка года, жанра, описания
+        loadMovieXML().then(xml => {
+            if (!movie) return;
+            const movies = Array.from(xml.querySelectorAll('movie'));
+            const movieNode = movies.find(m => (m.querySelector('title').textContent || '').toLowerCase() === movie.toLowerCase());
+            if (movieNode) {
+                const year = movieNode.querySelector('year')?.textContent || '';
+                const genre = movieNode.querySelector('genre')?.textContent || '';
+                const description = movieNode.querySelector('description')?.textContent || '';
+                const yearElem = document.getElementById('confirmation-year');
+                const genreElem = document.getElementById('confirmation-genre');
+                const descElem = document.getElementById('confirmation-description');
+                if (yearElem) yearElem.textContent = year;
+                if (genreElem) genreElem.textContent = genre;
+                if (descElem) descElem.textContent = description;
+            }
+        });
     }
     
     // Обработчик для кнопки "Подробнее" на главной странице
@@ -337,15 +401,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Динамическая генерация постеров из XML на странице афиши
+    // Загрузка XML-файла с фильмами
+    async function loadMovieXML() {
+        const response = await fetch('movie-posters.xml');
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        return parser.parseFromString(xmlText, 'application/xml');
+    }
+
+    // Главная страница: только 3 фильма (первые из XML)
+    if (document.getElementById('main-movies-container')) {
+        loadMovieXML().then(xml => {
+            const container = document.getElementById('main-movies-container');
+            const movies = Array.from(xml.querySelectorAll('movie')).slice(0, 3);
+            movies.forEach(movie => {
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                card.innerHTML = `
+                    <div class="movie-card__image">
+                        <img src="${movie.querySelector('image').textContent}" alt="${movie.querySelector('title').textContent}">
+                    </div>
+                    <div class="movie-card__title">${movie.querySelector('title').textContent}</div>
+                `;
+                card.addEventListener('click', () => {
+                    localStorage.setItem('selectedMovieTitle', movie.querySelector('title').textContent);
+                    localStorage.setItem('selectedMovieImage', movie.querySelector('image').textContent);
+                    const trailer = movie.querySelector('trailer') ? movie.querySelector('trailer').textContent : '';
+                    localStorage.setItem('selectedMovieTrailer', trailer);
+                    window.location.href = 'movie.html';
+                });
+                container.appendChild(card);
+            });
+        });
+    }
+
+    // Афиша: все фильмы
     if (document.getElementById('poster-page')) {
-        const xmlScript = document.getElementById('movie-posters-xml');
-        const postersContainer = document.getElementById('posters-container');
-        if (xmlScript && postersContainer) {
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(xmlScript.textContent, 'application/xml');
+        loadMovieXML().then(xml => {
+            const postersContainer = document.getElementById('posters-container');
             const movies = Array.from(xml.querySelectorAll('movie'));
-            // Группируем по 3 фильма в строку
             for (let i = 0; i < movies.length; i += 3) {
                 const row = document.createElement('div');
                 row.className = 'posters__row';
@@ -358,7 +452,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="movie-card__title">${movie.querySelector('title').textContent}</div>
                     `;
-                    // Обработчик клика для перехода на страницу фильма
                     card.addEventListener('click', () => {
                         localStorage.setItem('selectedMovieTitle', movie.querySelector('title').textContent);
                         localStorage.setItem('selectedMovieImage', movie.querySelector('image').textContent);
@@ -370,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 postersContainer.appendChild(row);
             }
-        }
+        });
     }
 
     // На странице movie.html: кнопка 'Видео' открывает трейлер во всплывающем iframe
@@ -406,6 +499,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 modal.addEventListener('click', e => {
                     if (e.target === modal) modal.remove();
                 });
+            });
+        }
+    }
+
+    // На главной странице (афиша) выводим год и жанр для каждого фильма
+    if (document.getElementById('main-page')) {
+        const xmlScript = document.getElementById('movie-posters-xml');
+        if (xmlScript) {
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(xmlScript.textContent, 'application/xml');
+            const movies = Array.from(xml.querySelectorAll('movie'));
+            document.querySelectorAll('.movie-card').forEach(card => {
+                const titleElem = card.querySelector('.movie-card__title');
+                const yearElem = card.querySelector('.movie-card__year');
+                const genreElem = card.querySelector('.movie-card__genre');
+                if (titleElem && yearElem && genreElem) {
+                    const movie = movies.find(m => (m.querySelector('title').textContent || '').toLowerCase() === titleElem.textContent.toLowerCase());
+                    if (movie) {
+                        yearElem.textContent = movie.querySelector('year')?.textContent || '';
+                        genreElem.textContent = movie.querySelector('genre')?.textContent || '';
+                    }
+                }
             });
         }
     }

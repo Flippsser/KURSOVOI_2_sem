@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<posters>
+  <movie>
+    <title>Чужой</title>
+    <image>assets/images/alien.jpg</image>
+    <year>1979</year>
+    <genre>Фантастика, Ужасы</genre>
+    <description>Космический корабль «Ностромо» принимает сигнал бедствия с неизвестной планеты. Экипаж сталкивается с неизвестной формой жизни, которая начинает охоту на людей внутри корабля.</description>
+    <trailer>https://www.youtube.com/watch?v=-BGDJGU-INg</trailer>
+  </movie>
+  <movie>
+    <title>1 + 1</title>
+    <image>assets/images/oneplus.jpg</image>
+    <year>2011</year>
+    <genre>Комедия</genre>
+    <description>Парализованный аристократ Филипп нанимает в помощники молодого человека из неблагополучного района — Дрисса. Между ними завязывается необычная и трогательная дружба, меняющая их жизни.</description>
+    <trailer>https://www.youtube.com/watch?v=hXLcGFp65gI</trailer>
+  </movie>
+  <movie>
+    <title>Интерстеллар</title>
+    <image>assets/images/interstellar.jpg</image>
+    <year>2014</year>
+    <genre>Фантастика, Драма</genre>
+    <description>Когда засуха, пыльные бури и вымирание растений приводят человечество к продовольственному кризису, группа учёных отправляется сквозь червоточину в поисках новой планеты для жизни.</description>
+    <trailer>https://www.youtube.com/watch?v=m2vijtILDuk</trailer>
+  </movie>
+  <movie>
+    <title>Лёд 3</title>
+    <image>assets/images/ice3.jpg</image>
+    <year>2024</year>
+    <genre>Драма, Спорт</genre>
+    <description>История о преодолении трудностей, силе духа и настоящей любви в мире большого спорта. Главная героиня борется за свою мечту несмотря ни на что.</description>
+    <trailer>https://www.youtube.com/watch?v=JnI__lj4peQ</trailer>
+  </movie>
+  <movie>
+    <title>Социальная сеть</title>
+    <image>assets/images/social.jpg</image>
+    <year>2010</year>
+    <genre>Драма, Биография</genre>
+    <description>История создания Facebook: от идеи до мировой популярности, а также о конфликтах и предательстве между его основателями.</description>
+    <trailer>https://www.youtube.com/watch?v=54izAMhnj0c</trailer>
+  </movie>
+  <movie>
+    <title>Сто лет тому вперёд</title>
+    <image>assets/images/hundred.jpg</image>
+    <year>1985</year>
+    <genre>Фантастика, Приключения</genre>
+    <description>Приключения девочки Алисы Селезнёвой, которая отправляется в будущее, чтобы помочь своим друзьям и спасти мир.</description>
+    <trailer>https://www.youtube.com/watch?v=-0iEKdxvafo</trailer>
+  </movie>
+  <movie>
+    <title>Гран Туризмо</title>
+    <image>assets/images/granturismo.jpg</image>
+    <year>2023</year>
+    <genre>Биография, Драма</genre>
+    <description>История геймера, который благодаря своему таланту и упорству становится профессиональным автогонщиком.</description>
+    <trailer>https://www.youtube.com/watch?v=DudTSlEFwgY</trailer>
+  </movie>
+  <movie>
+    <title>Вызов</title>
+    <image>assets/images/vyzov.jpg</image>
+    <year>2023</year>
+    <genre>Драма, Приключения</genre>
+    <description>Первая в мире художественная картина, частично снятая на МКС. Хирург отправляется в космос, чтобы спасти жизнь космонавту.</description>
+    <trailer>https://www.youtube.com/watch?v=PKBKmaOFlsg</trailer>
+  </movie>
+  <movie>
+    <title>Холоп. Великолепный век</title>
+    <image>assets/images/holop.jpg</image>
+    <year>2024</year>
+    <genre>Комедия, История</genre>
+    <description>Современный молодой человек оказывается в прошлом и становится холопом, где его ждут невероятные приключения и переосмысление жизни.</description>
+    <trailer>https://www.youtube.com/watch?v=7uq0SNcAx8o</trailer>
+  </movie>
+  <movie>
+    <title>Проект X: Дорвались</title>
+    <image>assets/images/projectx.jpg</image>
+    <year>2012</year>
+    <genre>Комедия</genre>
+    <description>Трое друзей устраивают вечеринку, которая выходит из-под контроля и становится самой безумной в их жизни.</description>
+    <trailer>https://www.youtube.com/watch?v=FIZTw7iKtoA</trailer>
+  </movie>
+  <movie>
+    <title>Парк юрского периода</title>
+    <image>assets/images/jurrasic.jpg</image>
+    <year>1993</year>
+    <genre>Фантастика, Приключения</genre>
+    <description>Группа людей оказывается на острове, где учёные создали парк с клонированными динозаврами. Эксперимент выходит из-под контроля.</description>
+    <trailer>https://www.youtube.com/watch?v=BDya2mYFupM</trailer>
+  </movie>
+  <movie>
+    <title>Салют-7</title>
+    <image>assets/images/salyut.jpg</image>
+    <year>2017</year>
+    <genre>Драма, История</genre>
+    <description>Реальная история спасения космической станции «Салют-7», когда связь с ней была потеряна, а на кону стояли жизни людей и престиж страны.</description>
+    <trailer>https://www.youtube.com/watch?v=gUSJdqnlwNc</trailer>
+  </movie>
+</posters> 

@@ -327,6 +327,12 @@ button {
   background-color: silver;
 }
 
+.movie__year-genre-row {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
 /* Страница бронирования */
 .booking {
   padding: 40px 20px;
