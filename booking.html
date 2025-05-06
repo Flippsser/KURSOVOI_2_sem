@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Cinema - Бронирование</title>
+    <link rel="stylesheet" href="scss/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/images.svg">
+</head>
+<body>
+    <div class="page" id="booking-page">
+        <!-- Шапка сайта -->
+        <header class="header">
+            <div class="header__logo"><img src="assets/images/images.svg"></div>
+            <div class="header__burger" id="burger-menu-booking">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="main">
+            <section class="booking">
+                <h2 class="booking__title">Заказ билета</h2>
+                
+                <div class="booking__form">
+                    <div class="booking__section">
+                        <h3 class="booking__section-title">Выберите фильм</h3>
+                        <div class="booking__dropdown">
+                            <div class="booking__dropdown-selected">
+                                <span>Фильм</span>
+                                <div class="booking__dropdown-arrow"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="booking__movie">
+                            <div class="booking__movie-image">
+                                <img src="assets/images/interstellar.jpg" alt="Интерстеллар">
+                            </div>
+                            <div class="booking__movie-title">интерстеллар</div>
+                        </div>
+                    </div>
+
+                    <div class="booking__section">
+                        <h3 class="booking__section-title">Выберите Кинотеатр</h3>
+                        <div class="booking__dropdown">
+                            <div class="booking__dropdown-selected">
+                                <span>Кинотеатр</span>
+                                <div class="booking__dropdown-arrow"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking__section">
+                        <h3 class="booking__section-title">Выберите время</h3>
+                        <div class="booking__dropdown">
+                            <div class="booking__dropdown-selected">
+                                <span>время</span>
+                                <div class="booking__dropdown-arrow"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking__section">
+                        <div class="booking__seats">
+                            <div class="booking__seats-legend">
+                                <div class="booking__seat booking__seat--free"></div>
+                                <span>- место свободно</span>
+                                <div class="booking__seat booking__seat--occupied"></div>
+                                <span>- место занято</span>
+                            </div>
+                            <div class="booking__seats-container">
+                                <!-- Ряды и места будут добавлены через JavaScript -->
+                                <div class="booking__seats-screen"></div>
+                                <div class="booking__seats-rows"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="booking__submit">Забронировать</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Подвал сайта -->
+        <footer class="footer">
+            <div class="footer__logo">Star Cinema</div>
+            <div class="footer__links">
+                <a href="about.html" class="footer__link">О Нас</a>
+                <a href="price.html" class="footer__link">Цены</a>
+                <a href="posters.html" class="footer__link">Афиша</a>
+            </div>
+            <div class="footer__social">
+                <a href="#" class="footer__social-icon">
+                    <img src="assets/images/facebook-icon.svg" alt="Facebook">
+                </a>
+                <a href="#" class="footer__social-icon">
+                    <img src="assets/images/youtube-icon.svg" alt="YouTube">
+                </a>
+                <a href="#" class="footer__social-icon">
+                    <img src="assets/images/instagram-icon.svg" alt="Instagram">
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Cinema - Киноафиша</title>
+    <link rel="stylesheet" href="scss/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/images.svg">
+</head>
+<body>
+    <!-- Главная страница (афиша) -->
+    <div class="page" id="main-page">
+        <!-- Шапка сайта -->
+        <header class="header">
+            <div class="header__logo"><img src="assets/images/images.svg"></div>
+            <div class="header__burger" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="main">
+            <div class="main__hero">
+                <div class="main__overlay"></div>
+                <h1 class="main__title">Социальная сеть</h1>
+                <button class="main__btn">Подробнее</button>
+            </div>
+
+            <section class="movies">
+                <h2 class="movies__title">Сегодня в кино</h2>
+                <div class="movies__container">
+                    <div class="movie-card">
+                        <div class="movie-card__image">
+                            <img src="assets/images/alien.jpg" alt="Чужой">
+                        </div>
+                        <div class="movie-card__title">чужой</div>
+                    </div>
+                    <div class="movie-card">
+                        <div class="movie-card__image">
+                            <img src="assets/images/oneplus.jpg" alt="1 + 1">
+                        </div>
+                        <div class="movie-card__title">1 + 1</div>
+                    </div>
+                    <div class="movie-card">
+                        <div class="movie-card__image">
+                            <img src="assets/images/interstellar.jpg" alt="интерстеллар">
+                        </div>
+                        <div class="movie-card__title">интерстеллар</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Подвал сайта -->
+        <footer class="footer">
+            <div class="footer__logo">Star Cinema</div>
+            <div class="footer__links">
+                <a href="about.html" class="footer__link">О Нас</a>
+                <a href="price.html" class="footer__link">Цены</a>
+                <a href="posters.html" class="footer__link">Афиша</a>
+            </div>
+            <div class="footer__social">
+                <a href="#" class="footer__social-icon">
+                    <img src="assets/images/facebook-icon.svg" alt="Facebook">
+                </a>
+                <a href="#" class="footer__social-icon">
+                    <img src="assets/images/youtube-icon.svg" alt="YouTube">
+                </a>
+                <a href="#" class="footer__social-icon">
+                    <img src="assets/images/instagram-icon.svg" alt="Instagram">
+                </a>
+            </div>
+        </footer>
+    </div>
+
+   <script src="js/script.js"></script>
+</body>
+</html> 
