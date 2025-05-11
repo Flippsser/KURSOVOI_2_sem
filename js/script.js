@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             seatsContainer.appendChild(rowElement);
         }
-        // После генерации мест обновляем цену (на случай, если seats генерируются повторно)
+        // После генерации мест обновляем цену 
         updateTotalPrice();
     }
     

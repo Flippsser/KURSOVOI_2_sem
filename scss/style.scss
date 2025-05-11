@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* Основные настройки и сброс стилей */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +12,7 @@ body {
   background-color: #423C3C;
   line-height: 1.5;
 }
+
 body.lock {
   overflow: hidden;
 }
@@ -921,4 +922,4 @@ html, body {
 .header, .footer {
   width: 100%;
   box-sizing: border-box;
-}/*# sourceMappingURL=style.css.map */
+}
