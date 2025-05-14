@@ -503,4 +503,25 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+        // На главной странице (афиша) выводим каждого фильма
+    if (document.getElementById('main-page')) {
+        const xmlScript = document.getElementById('movie-posters-xml');
+        if (xmlScript) {
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(xmlScript.textContent, 'application/xml');
+            const movies = Array.from(xml.querySelectorAll('movie'));
+            document.querySelectorAll('.movie-card').forEach(card => {
+                const titleElem = card.querySelector('.movie-card__title');
+                const yearElem = card.querySelector('.movie-card__year');
+                const genreElem = card.querySelector('.movie-card__genre');
+                if (titleElem && yearElem && genreElem) {
+                    const movie = movies.find(m => (m.querySelector('title').textContent || '').toLowerCase() === titleElem.textContent.toLowerCase());
+                    if (movie) {
+                        yearElem.textContent = movie.querySelector('year')?.textContent || '';
+                        genreElem.textContent = movie.querySelector('genre')?.textContent || '';
+                    }
+                }
+            });
+        }
+    }
 });
