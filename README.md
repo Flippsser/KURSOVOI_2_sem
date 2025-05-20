@@ -1,4 +1,4 @@
-# [Star Cinema](flippsser.github.io/KURSOVOI_2_sem/) - Сайт Киноафиши
+# [Star Cinema](https://flippsser.github.io/KURSOVOI_2_sem/) - Сайт Киноафиши
 
 Веб-сайт для кинотеатра "Star Cinema" с возможностью просмотра афиши, информации о фильмах и бронирования билетов.
 
